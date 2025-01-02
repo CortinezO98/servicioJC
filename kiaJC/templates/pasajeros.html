@@ -1,0 +1,77 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-2">
+    <div class="card shadow-lg border-0 ">
+        <div class="card-header custom-bg-white custom-text-orange custom-border-orange text-center">
+            <h2 class="mb-0">Formulario de Reserva de Pasajero</h2>
+        </div>
+        <div class="card-body border border-warning">
+            <form method="post" class="row g-3">
+                {% csrf_token %}
+                <div class="col-md-6">
+                    <label for="nombre_pasajero" class="form-label">Nombre del Pasajero</label>
+                    <input type="text" class="form-control" id="nombre_pasajero" name="nombre_pasajero" placeholder="Ingrese su nombre completo" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="direccion_origen" class="form-label">Dirección de Origen</label>
+                    <input type="text" class="form-control" id="direccion_origen" name="direccion_origen" placeholder="Ingrese su dirección" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="direccion_destino" class="form-label">Dirección de Destino</label>
+                    <input type="text" class="form-control" id="direccion_destino" name="direccion_destino" placeholder="Ingrese su dirección" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su teléfono" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="correo_electronico" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" placeholder="Ingrese su correo electrónico" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="origen" class="form-label">Origen</label>
+                    <select name="origen" id="origen" class="form-select" required>
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="Barranquilla">Barranquilla</option>
+                        <option value="Galeras">Galeras</option>
+                        <option value="Since">Sincé</option>
+                        <option value="Sincelejo">Sincelejo</option>
+                        <option value="Betulia">Betulia</option>
+                        <option value="Corozal">Corozal</option>
+                        <option value="Ovejas">Ovejas</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="destino" class="form-label">Destino</label>
+                    <select name="destino" id="destino" class="form-select" required>
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="Barranquilla">Barranquilla</option>
+                        <option value="Galeras">Galeras</option>
+                        <option value="Since">Sincé</option>
+                        <option value="Sincelejo">Sincelejo</option>
+                        <option value="Betulia">Betulia</option>
+                        <option value="Corozal">Corozal</option>
+                        <option value="Ovejas">Ovejas</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="fecha_viaje" class="form-label">Fecha del Viaje</label>
+                    <input type="date" class="form-control" id="fecha_viaje" name="fecha_viaje" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="cantidad_pasajes" class="form-label">Número de Pasajes</label>
+                    <input type="number" class="form-control" id="cantidad_pasajes" name="cantidad_pasajes" min="1" max="16" required>
+                </div>
+                <div class="col-12">
+                    <label for="descripcion_pasajero" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="descripcion_pasajero" name="descripcion" rows="3" placeholder="Escriba alguna observación o comentario"></textarea>
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-outline-orange w-50">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

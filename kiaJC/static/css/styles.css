@@ -1,0 +1,92 @@
+header, footer {
+    background-color: #018a2c !important;
+    color: rgba(255, 255, 255, 0.8); 
+}
+
+/* Enlace de 'Servicio Colectivo JC' siempre blanco */
+header a.navbar-brand {
+    color: #ffffff !important; /* Blanco puro */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Sombra opcional */
+    pointer-events: none; /* Evita que tenga efectos de hover o clic */
+}
+
+/* Enlaces dentro del Header y Footer (excepto 'Servicio Colectivo JC') */
+header a.nav-link, footer a {
+    color: rgba(255, 255, 255, 0.8); /* Blanco opaco */
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+/* Hover y clic en los enlaces */
+header a.nav-link:hover, header a.nav-link:focus,
+footer a:hover, footer a:focus {
+    color: #ffffff; /* Blanco completo al hacer hover o clic */
+}
+
+.text-orange {
+    color: #ffa500 !important;
+}
+
+/* Botones con color naranja sólido */
+.btn-orange {
+    --bs-btn-bg: #ffa500 !important;
+    --bs-btn-border-color: #ffa500 !important;
+    --bs-btn-disabled-bg: #ffa500 !important;
+    --bs-btn-disabled-border-color: #ffa500 !important;
+    --bs-btn-color: #ffffff !important; /* Texto blanco por defecto */
+}
+
+/* Botones con estilo outline naranja */
+.btn-outline-orange {
+    --bs-btn-color: #ffa500;
+    --bs-btn-border-color: #ffa500;
+    --bs-btn-hover-bg: #ffa500;
+    --bs-btn-hover-border-color: #ffa500;
+    --bs-btn-active-bg: #ffa500;
+    --bs-btn-active-border-color: #ffa500;
+    --bs-btn-disabled-color: #ffa500;
+    --bs-btn-disabled-border-color: #ffa500;
+    --bs-btn-hover-color: #ffffff; /* Texto blanco al hacer hover */
+    --bs-btn-active-color: #ffffff; /* Texto blanco al hacer clic */
+}
+
+/* Estilo personalizado para el formulario */
+.card {
+    border-radius: 12px solid #ffa500 !important;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: 2px solid #ffffff;
+    
+}
+
+.card-body {
+    background-color: #f8f9fa; /* Fondo claro */
+    padding: 2rem;
+    
+    
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    
+}
+
+.custom-text-orange {
+    color: #ffa500 !important;
+
+}
+
+.custom-bg-white{
+    background-color: white !important;
+}
+
+.custom-border-orange{
+    border: 2px solid #ffa500 !important;
+}
