@@ -1,77 +1,185 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="container mt-2">
-    <div class="card shadow-lg border-0 ">
-        <div class="card-header custom-bg-white custom-text-orange custom-border-orange text-center">
-            <h2 class="mb-0">Formulario de Reserva de Pasajero</h2>
-        </div>
-        <div class="card-body border border-warning">
-            <form method="post" class="row g-3">
-                {% csrf_token %}
-                <div class="col-md-6">
-                    <label for="nombre_pasajero" class="form-label">Nombre del Pasajero</label>
-                    <input type="text" class="form-control" id="nombre_pasajero" name="nombre_pasajero" placeholder="Ingrese su nombre completo" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="direccion_origen" class="form-label">Dirección de Origen</label>
-                    <input type="text" class="form-control" id="direccion_origen" name="direccion_origen" placeholder="Ingrese su dirección" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="direccion_destino" class="form-label">Dirección de Destino</label>
-                    <input type="text" class="form-control" id="direccion_destino" name="direccion_destino" placeholder="Ingrese su dirección" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="telefono" class="form-label">Teléfono</label>
-                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su teléfono" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="correo_electronico" class="form-label">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" placeholder="Ingrese su correo electrónico" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="origen" class="form-label">Origen</label>
-                    <select name="origen" id="origen" class="form-select" required>
-                        <option value="" disabled selected>Seleccione una opción</option>
-                        <option value="Barranquilla">Barranquilla</option>
-                        <option value="Galeras">Galeras</option>
-                        <option value="Since">Sincé</option>
-                        <option value="Sincelejo">Sincelejo</option>
-                        <option value="Betulia">Betulia</option>
-                        <option value="Corozal">Corozal</option>
-                        <option value="Ovejas">Ovejas</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="destino" class="form-label">Destino</label>
-                    <select name="destino" id="destino" class="form-select" required>
-                        <option value="" disabled selected>Seleccione una opción</option>
-                        <option value="Barranquilla">Barranquilla</option>
-                        <option value="Galeras">Galeras</option>
-                        <option value="Since">Sincé</option>
-                        <option value="Sincelejo">Sincelejo</option>
-                        <option value="Betulia">Betulia</option>
-                        <option value="Corozal">Corozal</option>
-                        <option value="Ovejas">Ovejas</option>
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="fecha_viaje" class="form-label">Fecha del Viaje</label>
-                    <input type="date" class="form-control" id="fecha_viaje" name="fecha_viaje" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="cantidad_pasajes" class="form-label">Número de Pasajes</label>
-                    <input type="number" class="form-control" id="cantidad_pasajes" name="cantidad_pasajes" min="1" max="16" required>
-                </div>
-                <div class="col-12">
-                    <label for="descripcion_pasajero" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="descripcion_pasajero" name="descripcion" rows="3" placeholder="Escriba alguna observación o comentario"></textarea>
-                </div>
-                <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-outline-orange w-50">Enviar</button>
-                </div>
-            </form>
-        </div>
+<div class="container mt-5">
+  <div class="card shadow border-0">
+    <div class="card-header custom-bg-white custom-text-orange custom-border-orange text-center">
+      <h2 class="mb-0">Formulario de Reserva de Pasajero</h2>
     </div>
+    <div class="card-body border-warning">
+      <form id="form-pasajero" method="post" novalidate class="row g-3">
+        {% csrf_token %}
+
+        <!-- Cédula -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="cedula" name="cedula"
+                   placeholder="Cédula" required>
+            <label for="cedula">Cédula</label>
+          </div>
+        </div>
+
+        <!-- Nombre completo -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="nombre_pasajero" name="nombre_pasajero"
+                   placeholder="Nombre completo" required>
+            <label for="nombre_pasajero">Nombre completo</label>
+          </div>
+        </div>
+
+        <!-- Dirección de Origen -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="direccion_origen" name="direccion_origen"
+                   placeholder="Dirección de Origen" required>
+            <label for="direccion_origen">Dirección de Origen</label>
+          </div>
+        </div>
+
+        <!-- Dirección de Destino -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="direccion_destino" name="direccion_destino"
+                   placeholder="Dirección de Destino" required>
+            <label for="direccion_destino">Dirección de Destino</label>
+          </div>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="tel" class="form-control" id="telefono" name="telefono"
+                   placeholder="Teléfono" required pattern="[0-9]{7,15}">
+            <label for="telefono">Teléfono</label>
+          </div>
+        </div>
+
+        <!-- Correo electrónico -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="email" class="form-control" id="correo_electronico" name="correo_electronico"
+                   placeholder="Correo electrónico" required>
+            <label for="correo_electronico">Correo electrónico</label>
+          </div>
+        </div>
+
+        <!-- Origen -->
+        <div class="col-md-6">
+          <select class="form-select" id="origen" name="origen" required>
+            <option value="" disabled selected>Origen</option>
+            <option>Barranquilla</option>
+            <option>Galeras</option>
+            <option>Sincé</option>
+            <option>Sincelejo</option>
+            <option>Betulia</option>
+            <option>Corozal</option>
+            <option>Ovejas</option>
+          </select>
+        </div>
+
+        <!-- Destino -->
+        <div class="col-md-6">
+          <select class="form-select" id="destino" name="destino" required>
+            <option value="" disabled selected>Destino</option>
+            <option>Barranquilla</option>
+            <option>Galeras</option>
+            <option>Sincé</option>
+            <option>Sincelejo</option>
+            <option>Betulia</option>
+            <option>Corozal</option>
+            <option>Ovejas</option>
+          </select>
+        </div>
+
+        <!-- Fecha del viaje -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="date" class="form-control" id="fecha_viaje" name="fecha_viaje"
+                   placeholder="Fecha del viaje" required>
+            <label for="fecha_viaje">Fecha del viaje</label>
+          </div>
+        </div>
+
+        <!-- Cantidad de pasajes -->
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="number" class="form-control" id="cantidad_pasajes" name="cantidad_pasajes"
+                   placeholder="Número de pasajes" min="1" max="16" required>
+            <label for="cantidad_pasajes">Número de pasajes</label>
+          </div>
+        </div>
+
+        <!-- Descripción -->
+        <div class="col-12">
+          <div class="form-floating">
+            <textarea class="form-control" id="descripcion_pasajero" name="descripcion" 
+                      placeholder="Descripción" style="height: 100px;"></textarea>
+            <label for="descripcion_pasajero">Descripción (observaciones)</label>
+          </div>
+        </div>
+
+        <!-- Botón de envío -->
+        <div class="col-12 text-center mt-3">
+          <button id="btn-enviar" type="submit" class="btn btn-outline-orange px-5">
+            <span id="btn-text">Enviar</span>
+            <span id="btn-spinner" class="spinner-border spinner-border-sm ms-2 d-none"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
+
+<!-- Autocompletar por cédula -->
+<script src="{% static 'js/buscar_cliente.js' %}"></script>
+
+<!-- Validación de cierre de reservas y spinner -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form        = document.getElementById('form-pasajero');
+  const btn         = document.getElementById('btn-enviar');
+  const btnText     = document.getElementById('btn-text');
+  const btnSpinner  = document.getElementById('btn-spinner');
+  const origenField = document.getElementById('origen');
+  const fechaField  = document.getElementById('fecha_viaje');
+
+  // Comprueba si el viaje sigue abierto
+  async function checkTripOpen() {
+    const origen = origenField.value;
+    const fecha  = fechaField.value;
+    if (!origen || !fecha) return;
+    const ruta = origen === 'Barranquilla' ? 'Barranquilla a Galeras' : 'Galeras a Barranquilla';
+    try {
+      const res = await fetch(`/viaje-abierto/?ruta=${encodeURIComponent(ruta)}&fecha=${fecha}`);
+      const { open } = await res.json();
+      if (!open) {
+        btn.disabled = true;
+        Swal.fire({
+          icon: 'warning',
+          title: 'Reservas cerradas',
+          text: `No se aceptan reservas para ${ruta} el ${fecha}.`
+        });
+      } else {
+        btn.disabled = false;
+      }
+    } catch (err) {
+      console.error('Error chequeando viaje:', err);
+    }
+  }
+
+  // Rechequear cuando cambian origen o fecha
+  origenField .addEventListener('change', checkTripOpen);
+  fechaField  .addEventListener('change', checkTripOpen);
+
+  // Mostrar spinner y prevenir doble envío
+  form.addEventListener('submit', e => {
+    if (!form.checkValidity()) return;
+    btn.disabled = true;
+    btnText.classList.add('d-none');
+    btnSpinner.classList.remove('d-none');
+  });
+});
+</script>
 {% endblock %}

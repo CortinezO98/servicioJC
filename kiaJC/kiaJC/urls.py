@@ -19,11 +19,14 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from gestion.views import *
-
+from gestion import views as gestion_views 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),  
+    path('viaje-abierto/', gestion_views.viaje_abierto, name='viaje_abierto'),
     path('encomiendas/', encomiendas, name='encomiendas.html'),     
     path('pasajeros/', pasajero, name='pasajeros.html'),
+    path('buscar-cliente/', buscar_cliente, name='buscar_cliente'),
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
